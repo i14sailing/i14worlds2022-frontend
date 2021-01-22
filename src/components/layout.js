@@ -1,6 +1,5 @@
 import React from 'react';
 import Footer from './footer';
-import Header from './header';
 import { Helmet } from 'react-helmet';
 
 export default function Layout({ children, location }) {
@@ -13,25 +12,15 @@ export default function Layout({ children, location }) {
         >
             <Helmet>
                 <meta charSet='utf-8' />
-                <title>Tack & Gybe</title>
-                <meta name='description' content='Helmet application' />
-
-                <meta property='og:title' content='Tack & Gybe' />
+                <title>I14 Worlds 2022</title>
+                <meta property='og:title' content='I14 Worlds 2022' />
+                <meta name='description' content='International 14 World Championship 2022 - Flensburg, Germany' />
                 <meta
                     property='og:description'
-                    content='International 14 Germany - Tack & Gybe Challenge'
-                />
-                <meta
-                    property='og:image'
-                    content='https://tack-and-gybe.dostuffthatmatters.dev/thumbnail.jpg'
+                    content='International 14 World Championship 2022 - Flensburg, Germany'
                 />
                 <meta property='og:type' content='website' />
-                <meta
-                    property='og:url'
-                    content='https://tack-and-gybe.dostuffthatmatters.dev'
-                />
             </Helmet>
-            <Header url={location.pathname} />
             <main>{children}</main>
             <div className='self-stretch flex-grow' />
             <Footer />

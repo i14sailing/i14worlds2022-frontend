@@ -54,17 +54,18 @@ const BuiltWithLove = (
 const Stretch = <div className='self-stretch flex-grow' />;
 const Buttons = (
     <>
+        
         <a
-            href='https://tack-and-gybe-cms.dostuffthatmatters.dev/admin'
+            href=''
             target='_blank'
             rel='noopener noreferrer'
-            className='mr-2'
+            className='mr-2 cursor-not-allowed'
             title='Admin Login'
         >
             <div className={`w-5 h-5 ${linkColors}`}>{AddIcon}</div>
         </a>
         <a
-            href='https://github.com/i14sailing/tack-and-gybe-frontend'
+            href='https://github.com/i14sailing/i14worlds2022-frontend'
             target='_blank'
             rel='noopener noreferrer'
             title='Code on GitHub'
