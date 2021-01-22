@@ -1,3 +1,6 @@
+require('dotenv').config({
+    path: `.env`,
+});
 const colors = require('tailwindcss/colors');
 
 
@@ -9,7 +12,7 @@ module.exports = {
         // purgeLayersByDefault: true,
     },
     purge: {
-        enabled: false,
+        enabled: process.env.PURGE_TAILWIND === "true",
         content: [
             './src/**/*.js',
             './src/**/*.jsx',
