@@ -58,6 +58,14 @@
     @apply justify-center;
 }
 
+.absolute-full {
+    @apply absolute;
+    @apply top-0;
+    @apply left-0;
+    @apply w-full;
+    @apply h-full;
+}
+
 svg {
     fill: currentColor;
     height: 100%;
@@ -106,7 +114,6 @@ main p a {
     @apply text-xl;
     @apply mb-4;
     @apply text-justify;
-    @apply text-teal-500;
     @apply font-weight-600;
 }
 

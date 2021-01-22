@@ -1,5 +1,8 @@
 const colors = require('tailwindcss/colors');
 
+
+// https://coolors.co/0d3b66-faf0ca-f4d35e-ee964b-f95738
+
 module.exports = {
     future: {
         // removeDeprecatedGapUtilities: true,
@@ -20,8 +23,12 @@ module.exports = {
                 transparent: 'transparent',
                 current: 'currentColor',
                 gray: colors.blueGray,
-                teal: colors.teal,
-                red: colors.red,
+                rose: colors.rose,
+                blue: '#0D3B66',
+                beige: '#FAF0CA',
+                yellow: '#F4D35E',
+                orange: '#EE964B',
+                red: '#F95738',
             },
             spacing: {
                   '5vh':   '5vh',

@@ -1,22 +1,20 @@
-require('dotenv').config({
-    path: `.env`,
-});
+const path = require('path');
 
 module.exports = {
     plugins: [
-        `gatsby-plugin-react-helmet`,
+        'gatsby-plugin-react-helmet',
         {
-            resolve: 'gatsby-source-strapi',
+            resolve: 'gatsby-plugin-root-import',
             options: {
-                apiURL: process.env.API_URL || 'http://localhost:1337',
-                contentTypes: ['video-submission'],
-                queryLimit: 1000,
+                src: path.join(__dirname, 'src'),
+                pages: path.join(__dirname, 'src/pages'),
+                static: path.join(__dirname, 'static'),
             },
         },
         {
-            resolve: `gatsby-plugin-layout`,
+            resolve: 'gatsby-plugin-layout',
             options: {
-                component: require.resolve(`./src/components/layout`),
+                component: require.resolve('./src/components/layout'),
             },
         },
     ],
