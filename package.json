@@ -2,7 +2,7 @@
   "name": "tack-and-gybe-frontend",
   "description": "Gatsby/TailwindCSS frontend for the I14 Tack and Gybe Challenge",
   "scripts": {
-    "build": "gatsby build",
+    "build": "tailwind build src/styles/tailwind.css -o src/styles/tailwind.out.css && gatsby build",
     "build:tailwind": "tailwind build src/styles/tailwind.css -o src/styles/tailwind.out.css",
     "develop": "gatsby develop -H 0.0.0.0 -p 8000",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
