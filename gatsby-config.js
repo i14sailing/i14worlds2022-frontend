@@ -1,4 +1,7 @@
 const path = require('path');
+require('dotenv').config({
+    path: `.env`,
+});
 
 module.exports = {
     plugins: [
@@ -15,6 +18,14 @@ module.exports = {
             resolve: 'gatsby-plugin-layout',
             options: {
                 component: require.resolve('./src/components/layout'),
+            },
+        },
+        {
+            resolve: 'gatsby-source-strapi',
+            options: {
+                apiURL: process.env.API_URL || 'http://localhost:1337',
+                contentTypes: ['contact'],
+                queryLimit: 1000,
             },
         },
     ],
