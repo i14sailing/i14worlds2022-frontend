@@ -14,6 +14,7 @@ export default function Index() {
                     'relative z-0 w-full bg-gray-300 bg-bottom bg-cover flex flex-col items-center justify-center mb-4 py-16'
                 }
                 style={{ backgroundImage: `url(${Image1})` }}
+                id='EventTitleContainer'
             >
                 <div className='bg-gray-900 opacity-70 absolute-full' />
                 <div

@@ -5,7 +5,7 @@ exports.onCreatePage = ({ page, actions }) => {
         page.context.layout = 'landing';
         createPage(page);
     } else if (page.path.includes('event')) {
-        page.context.layout = 'fullwidth';
+        page.context.layout = 'event';
         createPage(page);
     }
 };

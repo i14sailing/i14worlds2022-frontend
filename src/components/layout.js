@@ -1,5 +1,6 @@
 import React from 'react';
 import Footer from './footer';
+import Navbar from './navbar';
 import { Helmet } from 'react-helmet';
 
 export default function Layout({ children, pageContext }) {
@@ -29,13 +30,10 @@ export default function Layout({ children, pageContext }) {
         );
     }
 
-    let paddingClasses;
-
-    if (pageContext.layout === 'fullwidth') {
-        paddingClasses = 'px-0';
-    } else {
-        paddingClasses = 'px-5vw xl:px-15vw 2xl:px-25vw';
-    }
+    const isEventPage = pageContext.layout === 'event';
+    const paddingClasses = isEventPage
+        ? 'px-0'
+        : 'px-5vw xl:px-15vw 2xl:px-25vw';
 
     return (
         <div
@@ -45,7 +43,8 @@ export default function Layout({ children, pageContext }) {
             }
         >
             {helmetMeta}
-            <main>{children}</main>
+            <Navbar eventPage={isEventPage} />
+            <main className={isEventPage ? '' : 'mt-16'}>{children}</main>
             <div className='self-stretch flex-grow' />
             {pageContext.layout === 'fullwidth' && (
                 <div className={`w-full px-5vw xl:px-15vw 2xl:px-25vw`}>
