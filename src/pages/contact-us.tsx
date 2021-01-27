@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { sortBy } from 'lodash';
+import ContactCard from '../components/contact-us-page/contact-card';
 
 export default function Home() {
     const { allStrapiContact } = useStaticQuery(query);
@@ -9,19 +10,11 @@ export default function Home() {
     if (nodes.length > 0) {
         return (
             <>
-                <div
-                    className={
-                        'mx-auto w-full mt-4 mb-8 ' +
-                        'sm:w-65vw ' +
-                        'md:w-55vw ' +
-                        'lg:mb-16 lg:w-45vw ' +
-                        'xl:mt-6 xl:mb-24 xl:w-35vw ' +
-                        '2xl:mt-8 2xl:mb-32 2xl:w-30vw '
-                    }
-                >
+                <h2 className='mt-12 mb-8 text-gray-800'>Contact Us</h2>
+                <div className={'w-full grid grid-cols-2 gap-x-4 gap-y-4'}>
                     {sortBy(nodes, ['role']).map(
                         (contact: ContactNode, i: number) => (
-                            <div>{contact.name}</div>
+                            <ContactCard contact={contact} />
                         )
                     )}
                 </div>
@@ -46,7 +39,11 @@ const query = graphql`
                 name
                 role
                 image {
-                    relativePath
+                    childImageSharp {
+                        original {
+                            src
+                        }
+                    }
                 }
             }
         }
@@ -58,6 +55,10 @@ type ContactNode = {
     email: string;
     role: string;
     image: {
-        relativePath: string;
+        childImageSharp: {
+            original: {
+                src: string;
+            };
+        };
     };
 };
