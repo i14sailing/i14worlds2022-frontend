@@ -10,8 +10,19 @@ export default function CountDownBox() {
         minutes: 0,
         seconds: 0,
     });
-    useEffect(refreshCountDown, []);
-    let [countdownInterval] = useState(setInterval(refreshCountDown, 1000));
+
+    let [countdownInterval, setCountdownInterval] = useState(undefined);
+
+    useEffect(() => {
+        setCountdownInterval(setInterval(refreshCountDown, 1000));
+        refreshCountDown();
+        return () => {
+            // on unmount
+            console.log('cleaned up');
+            clearInterval(countdownInterval);
+            setCountdownInterval(undefined);
+        };
+    }, []);
 
     function refreshCountDown() {
         let difference = (endDate - new Date().getTime()) / 1000;

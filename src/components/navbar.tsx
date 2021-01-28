@@ -80,22 +80,28 @@ const NavLink = (props: {
     </Link>
 );
 
-function Navbar(props: { eventPage: boolean }) {
-    const [transparent, setTransparent] = useState(false);
+function Navbar(props: { isEventPage: boolean }) {
+    const [transparent, setTransparent] = useState(props.isEventPage);
+    useEffect(() => {
+        if (props.isEventPage) {
+            updateScroll();
+            window.addEventListener('scroll', updateScroll);
+        } else {
+            window.removeEventListener('scroll', updateScroll);
+            setTransparent(false);
+        }
+    }, [props.isEventPage]);
 
     function updateScroll() {
-        if (props.eventPage) {
-            const clientHeight = document.getElementById('EventTitleContainer')
-                ?.clientHeight;
-            if (clientHeight) {
-                setTransparent(window.scrollY < clientHeight - 64);
-            }
+        const clientHeight = document.getElementById('EventTitleContainer')
+            ?.clientHeight;
+        if (clientHeight) {
+            setTransparent(window.scrollY < clientHeight - 64);
         }
     }
 
+    // Remove event listeners on unmount
     useEffect(() => {
-        updateScroll();
-        window.addEventListener('scroll', updateScroll);
         return () => {
             window.removeEventListener('scroll', updateScroll);
         };

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from './footer';
 import Navbar from './navbar';
 import { Helmet } from 'react-helmet';
 
-export default function Layout({ children, pageContext }) {
+export default function Layout({ location, children, pageContext }) {
     const helmetMeta = (
         <Helmet>
             <meta charSet='utf-8' />
@@ -21,6 +21,13 @@ export default function Layout({ children, pageContext }) {
         </Helmet>
     );
 
+    const [isEventPage, setIsEventPage] = useState(
+        pageContext.layout === 'event'
+    );
+    useEffect(() => {
+        setIsEventPage(location.pathname.includes('event'));
+    }, [location]);
+
     if (pageContext.layout === 'landing') {
         return (
             <div className='fixed top-0 left-0 w-full h-full center-content'>
@@ -30,28 +37,24 @@ export default function Layout({ children, pageContext }) {
         );
     }
 
-    const isEventPage = pageContext.layout === 'event';
-    const paddingClasses = isEventPage
-        ? 'px-0'
-        : 'px-5vw xl:px-15vw 2xl:px-25vw';
+    const contentPadding = 'px-5vw xl:px-15vw 2xl:px-25vw';
 
     return (
         <div
             className={
-                'relative top-0 flex flex-col min-h-screen bg-gray-100 ' +
-                `w-full ${paddingClasses} `
+                'relative top-0 flex flex-col min-h-screen ' +
+                'bg-gray-100 w-full '
             }
         >
             {helmetMeta}
-            <Navbar eventPage={isEventPage} />
-            <main className={isEventPage ? '' : 'mt-16'}>{children}</main>
+            <Navbar isEventPage={isEventPage} />
+            <main className={isEventPage ? '' : `mt-16 ${contentPadding}`}>
+                {children}
+            </main>
             <div className='self-stretch flex-grow' />
-            {pageContext.layout === 'fullwidth' && (
-                <div className={`w-full px-5vw xl:px-15vw 2xl:px-25vw`}>
-                    <Footer />
-                </div>
-            )}
-            {pageContext.layout !== 'fullwidth' && <Footer />}
+            <div className={`w-full ${contentPadding}`}>
+                <Footer />
+            </div>
         </div>
     );
 }

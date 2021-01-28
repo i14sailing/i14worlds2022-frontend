@@ -6,7 +6,7 @@ import ContactCard from '../components/contact-us-page/contact-card';
 const Schedule = (props: { days: ScheduleDay[] }) => (
     <div className={'w-70% mx-15% grid grid-cols-2 gap-x-4 gap-y-4'}>
         {sortBy(props.days, ['Date']).map((day: ScheduleDay, i: number) => (
-            <div>{day.Date}</div>
+            <div key={day.Date}>{day.Date}</div>
         ))}
     </div>
 );
