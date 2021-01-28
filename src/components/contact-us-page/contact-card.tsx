@@ -8,7 +8,7 @@ export default function ContactCard(props: { contact: ContactNode }) {
             }
         >
             <img
-                src={props.contact.image.childImageSharp.original.src}
+                src={props.contact.Image.publicURL}
                 className='w-full bg-gray-300'
             />
             <div
@@ -17,15 +17,28 @@ export default function ContactCard(props: { contact: ContactNode }) {
                     'text-gray-800 font-weight-500 text-center'
                 }
             >
-                <div className='h-7 font-weight-700'>{props.contact.role}</div>
-                <div className='h-7'>{props.contact.name}</div>
+                {props.contact.Role && (
+                    <div className='h-7 font-weight-700'>
+                        {props.contact.Role}
+                    </div>
+                )}
+                <div
+                    className={
+                        'h-7 ' +
+                        (props.contact.Role
+                            ? 'font-weight-500'
+                            : 'font-weight-700')
+                    }
+                >
+                    {props.contact.Name}
+                </div>
                 <a
                     className='h-7 hover:text-rose-500'
-                    href={`mailto:${props.contact.email}`}
+                    href={`mailto:${props.contact.Email}`}
                     target='_blank'
                     rel='noopener noreferrer'
                 >
-                    {props.contact.email}
+                    {props.contact.Email}
                 </a>
             </div>
         </div>
@@ -33,14 +46,11 @@ export default function ContactCard(props: { contact: ContactNode }) {
 }
 
 type ContactNode = {
-    name: string;
-    email: string;
-    role: string;
-    image: {
-        childImageSharp: {
-            original: {
-                src: string;
-            };
-        };
+    Name: string;
+    Email: string;
+    Role?: string;
+    Country?: string;
+    Image: {
+        publicURL: string;
     };
 };

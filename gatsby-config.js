@@ -7,6 +7,13 @@ module.exports = {
     plugins: [
         'gatsby-plugin-react-helmet',
         {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `images`,
+                path: `${__dirname}/src/strapi-images`,
+            },
+        },
+        {
             resolve: 'gatsby-plugin-root-import',
             options: {
                 src: path.join(__dirname, 'src'),
@@ -24,11 +31,9 @@ module.exports = {
             resolve: 'gatsby-source-strapi',
             options: {
                 apiURL: process.env.API_URL || 'http://localhost:1337',
-                contentTypes: ['contact'],
+                contentTypes: ['contact', 'country-host'],
                 queryLimit: 1000,
             },
         },
-        'gatsby-transformer-sharp',
-        'gatsby-plugin-sharp',
     ],
 };

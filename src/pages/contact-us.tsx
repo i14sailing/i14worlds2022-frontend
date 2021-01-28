@@ -1,32 +1,38 @@
 import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import { sortBy } from 'lodash';
 import ContactCard from '../components/contact-us-page/contact-card';
 
-export default function Home() {
-    const { allStrapiContact } = useStaticQuery(query);
-    let { nodes } = allStrapiContact;
-
-    if (nodes.length > 0) {
-        return (
-            <>
-                <h2 className='mt-12 mb-8 text-gray-800'>Contact Us</h2>
-                <div className={'w-full grid grid-cols-2 gap-x-4 gap-y-4'}>
-                    {sortBy(nodes, ['role']).map(
-                        (contact: ContactNode, i: number) => (
-                            <ContactCard contact={contact} />
-                        )
-                    )}
-                </div>
-            </>
-        );
-    }
+const ContactList = (props: { contacts: ContactNode[] }) => (
+    <div className={'w-70% mx-15% grid grid-cols-2 gap-x-4 gap-y-4'}>
+        {sortBy(props.contacts, ['Role', 'Country', 'Name']).map(
+            (contact: ContactNode, i: number) => (
+                <ContactCard contact={contact} />
+            )
+        )}
+    </div>
+);
+export default function Page() {
+    const { allStrapiContact, allStrapiCountryHost } = useStaticQuery(query);
+    const { nodes: contacts } = allStrapiContact;
+    const { nodes: countryHosts } = allStrapiCountryHost;
 
     return (
-        <div className='w-full mt-8 center-content'>
-            <div className='text-lg italic text-gray-800 font-weight-500'>
-                No contacts yet
-            </div>
+        <div className='mb-32'>
+            <h2 className='mt-12 mb-8 text-gray-800'>Country Hosts</h2>
+            {countryHosts.length > 0 && <ContactList contacts={countryHosts} />}
+            {countryHosts.length === 0 && (
+                <div className='text-lg italic text-gray-800 font-weight-500'>
+                    No country hosts yet
+                </div>
+            )}
+            <h2 className='mt-12 mb-8 text-gray-800'>Contact Us</h2>
+            {contacts.length > 0 && <ContactList contacts={contacts} />}
+            {contacts.length === 0 && (
+                <div className='text-lg italic text-gray-800 font-weight-500'>
+                    No contacts yet
+                </div>
+            )}
         </div>
     );
 }
@@ -35,15 +41,21 @@ const query = graphql`
     query MyQuery {
         allStrapiContact {
             nodes {
-                email
-                name
-                role
-                image {
-                    childImageSharp {
-                        original {
-                            src
-                        }
-                    }
+                Email
+                Name
+                Role
+                Image {
+                    publicURL
+                }
+            }
+        }
+        allStrapiCountryHost {
+            nodes {
+                Country
+                Name
+                Email
+                Image {
+                    publicURL
                 }
             }
         }
@@ -51,14 +63,11 @@ const query = graphql`
 `;
 
 type ContactNode = {
-    name: string;
-    email: string;
-    role: string;
-    image: {
-        childImageSharp: {
-            original: {
-                src: string;
-            };
-        };
+    Name: string;
+    Email: string;
+    Role?: string;
+    Country?: string;
+    Image: {
+        publicURL: string;
     };
 };
