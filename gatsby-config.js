@@ -31,7 +31,7 @@ module.exports = {
             resolve: 'gatsby-source-strapi',
             options: {
                 apiURL: process.env.API_URL || 'http://localhost:1337',
-                contentTypes: ['contact', 'country-host'],
+                contentTypes: ['contact', 'country-host', 'schedule-day'],
                 queryLimit: 1000,
             },
         },
