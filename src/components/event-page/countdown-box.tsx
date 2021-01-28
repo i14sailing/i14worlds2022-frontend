@@ -11,17 +11,14 @@ export default function CountDownBox() {
         seconds: 0,
     });
 
-    let [countdownInterval, setCountdownInterval] = useState(undefined);
-
     useEffect(() => {
-        setCountdownInterval(setInterval(refreshCountDown, 1000));
-        refreshCountDown();
-        return () => {
-            // on unmount
-            console.log('cleaned up');
-            clearInterval(countdownInterval);
-            setCountdownInterval(undefined);
-        };
+        if (new Date().getTime() < endDate) {
+            refreshCountDown();
+            const interval = setInterval(refreshCountDown, 1000);
+            return () => {
+                clearInterval(interval);
+            };
+        }
     }, []);
 
     function refreshCountDown() {
@@ -33,7 +30,7 @@ export default function CountDownBox() {
         let seconds = Math.floor(difference % 60);
 
         if (difference < 0) {
-            clearInterval(countdownInterval);
+            // no Interval anymore on page refresh
             days = hours = minutes = seconds = 0;
         }
 
