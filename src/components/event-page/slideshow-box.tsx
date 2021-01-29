@@ -1,6 +1,11 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 
 export default function SlideshowBox() {
+    const { slideshow } = useStaticQuery(query);
+
+    console.log(slideshow);
+
     function openPresentation() {
         window.open(
             'https://storage.googleapis.com/i14-worlds-documents/I14worlds2021_invitation.pdf',
@@ -35,3 +40,25 @@ export default function SlideshowBox() {
         </div>
     );
 }
+
+const query = graphql`
+    query SlideshowQuery {
+        slideshow: strapiSlideshow(
+            SlideName: { eq: "i14worlds2021-invitation-" }
+        ) {
+            SlideCount
+            SlideName
+            Extension
+            SlideNumberLength
+            BaseUrl
+        }
+    }
+`;
+
+type Slideshow = {
+    SlideCount: number;
+    SlideName: string;
+    Extension: string;
+    SlideNumberLength: number;
+    BaseUrl: string;
+};
