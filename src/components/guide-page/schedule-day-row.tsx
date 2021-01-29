@@ -1,0 +1,146 @@
+import React from 'react';
+import { useState } from 'react';
+import { ICONS } from 'src/utils/icons';
+import { ScheduleDay } from 'src/utils/types';
+
+const TRANSITION = 'duration-300 transition-all';
+const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const MONTHS = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+];
+
+function getTagIcon(tag: string) {
+    switch (tag) {
+        case 'Sailing':
+            return {
+                icon: ICONS.sailboat,
+                color: 'text-blue-500 opacity-50',
+            };
+        case 'Measurement':
+            return {
+                icon: ICONS.measurement,
+                color: 'text-gray-500 opacity-60',
+            };
+        case 'Dinner':
+            return {
+                icon: ICONS.food,
+                color: 'text-orange-500 opacity-50',
+            };
+        case 'Pricegiving':
+            return {
+                icon: ICONS.tropy,
+                color: 'text-yellow-500 opacity-50',
+            };
+        case 'Meeting':
+            return {
+                icon: ICONS.group,
+                color: 'text-gray-500 opacity-60',
+            };
+        case 'Party':
+            return {
+                icon: ICONS.party,
+                color: 'text-rose-500 opacity-50',
+            };
+        case 'Default':
+            return {
+                icon: <div />,
+                color: 'opacity-0',
+            };
+    }
+}
+
+interface Props {
+    first: boolean;
+    last: boolean;
+    scheduleDay: ScheduleDay;
+}
+export default function ScheduleDayRow(props: Props) {
+    const [open, setOpen] = useState(false);
+    const [date] = useState(new Date(props.scheduleDay.Date));
+
+    const marginyOpen: string =
+        (props.first ? 'mt-0 ' : 'mt-2 ') + (props.last ? 'mb-0 ' : 'mb-2 ');
+
+    const a = date.getDate() % 10;
+    const dayString =
+        MONTHS[date.getMonth()] +
+        ' ' +
+        date.getDate() +
+        (a === 1 ? 'st' : '') +
+        (a === 2 ? 'nd' : '') +
+        (a === 3 ? 'rd' : '') +
+        (a === 0 || a > 3 ? 'th' : '');
+
+    const tagsList: string[] = props.scheduleDay.Tags.map(
+        (t: { Name: string }) => t.Name
+    );
+    return (
+        <div
+            className={
+                'relative flex flex-col w-full bg-white z-10 shadow ' +
+                (props.first ? 'rounded-t ' : '') +
+                (props.last ? 'rounded-b ' : '') +
+                (open ? marginyOpen : 'my-0 ') +
+                (!props.last
+                    ? 'border-b-2 ' +
+                      (open ? 'border-white ' : 'border-gray-100 ')
+                    : '') +
+                TRANSITION
+            }
+        >
+            <div
+                className={
+                    'w-full h-12 text-md cursor-pointer text-gray-800 ' +
+                    'flex flex-row items-center justify-center ' +
+                    (props.scheduleDay.Label.includes('Worlds')
+                        ? 'font-weight-700 '
+                        : 'font-weight-500 ')
+                }
+                onClick={() => setOpen(!open)}
+            >
+                <div className='w-48 ml-4'>
+                    {DAYS[date.getDay()]}, {dayString}
+                </div>
+                <div className={''}>{props.scheduleDay.Label}</div>
+                {tagsList.map((t: string) => {
+                    const { icon, color } = getTagIcon(t);
+                    return (
+                        <div className={`w-5 h-5 ml-2 ${color}`} title={t}>
+                            {icon}
+                        </div>
+                    );
+                })}
+                <div className='self-stretch flex-grow hidden lg:block' />
+                <div
+                    className={
+                        'w-12 h-12 p-3 text-gray-500 ' +
+                        `transform ${TRANSITION} ` +
+                        (open ? 'rotate-180 ' : 'rotate-0 ')
+                    }
+                >
+                    {ICONS.expand_more}
+                </div>
+            </div>
+            <div
+                className={
+                    'px-3 text-lg overflow-hidden origin-top ' +
+                    `${TRANSITION} ` +
+                    (open ? 'max-h-64 py-2 ' : 'max-h-0 py-0 ')
+                }
+            >
+                {JSON.stringify(props.scheduleDay)}
+            </div>
+        </div>
+    );
+}

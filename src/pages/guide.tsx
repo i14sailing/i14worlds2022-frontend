@@ -1,12 +1,18 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { sortBy } from 'lodash';
-import ContactCard from '../components/contact-us-page/contact-card';
+import ScheduleDayRow from '../components/guide-page/schedule-day-row';
+import { ScheduleDay } from 'src/utils/types';
 
 const Schedule = (props: { days: ScheduleDay[] }) => (
-    <div className={'w-70% mx-15% grid grid-cols-2 gap-x-4 gap-y-4'}>
+    <div className={'w-full'}>
         {sortBy(props.days, ['Date']).map((day: ScheduleDay, i: number) => (
-            <div key={day.Date}>{day.Date}</div>
+            <ScheduleDayRow
+                key={day.Date}
+                scheduleDay={day}
+                first={i === 0}
+                last={i === props.days.length - 1}
+            />
         ))}
     </div>
 );
@@ -32,16 +38,10 @@ const query = graphql`
                     Label
                 }
                 Label
+                Tags {
+                    Name
+                }
             }
         }
     }
 `;
-
-type ScheduleDay = {
-    Date: string;
-    Label: string;
-    Events: {
-        label: string;
-        description: string;
-    }[];
-};

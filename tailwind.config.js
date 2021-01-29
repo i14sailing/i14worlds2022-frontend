@@ -22,16 +22,20 @@ module.exports = {
     },
     theme: {
         extend: {
+            transitionProperty: {
+                'size': 'margin, padding, width, height, max-height',
+                'size-colors': 'margin, padding, width, height, text-color, background-color, box-shadow',
+            },
             colors: {
                 transparent: 'transparent',
                 current: 'currentColor',
                 gray: colors.blueGray,
                 rose: colors.rose,
-                blue: '#0D3B66',
-                beige: '#FAF0CA',
-                yellow: '#F4D35E',
-                orange: '#EE964B',
-                red: '#F95738',
+                blue: colors.blue,
+                green: colors.green,
+                yellow: colors.amber,
+                orange: colors.orange,
+                red: colors.red,
             },
             spacing: {
                      '5%':  '5%',
