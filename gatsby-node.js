@@ -7,5 +7,8 @@ exports.onCreatePage = ({ page, actions }) => {
     } else if (page.path.includes('event')) {
         page.context.layout = 'event';
         createPage(page);
+    } else if (page.path.includes('presentation')) {
+        page.context.layout = 'presentation';
+        createPage(page);
     }
 };

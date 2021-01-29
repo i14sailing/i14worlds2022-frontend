@@ -35,6 +35,8 @@ export default function Layout({ location, children, pageContext }) {
                 <main>{children}</main>
             </div>
         );
+    } else if (pageContext.layout === 'presentation') {
+        return children;
     }
 
     const contentPadding = 'px-5vw xl:px-15vw 2xl:px-25vw';
