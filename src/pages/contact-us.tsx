@@ -4,7 +4,7 @@ import { sortBy } from 'lodash';
 import ContactCard from '../components/contact-us-page/contact-card';
 
 const ContactList = (props: { contacts: ContactNode[] }) => (
-    <div className={'w-70% mx-15% grid grid-cols-2 gap-x-4 gap-y-4'}>
+    <div className={'grid grid-cols-2 gap-x-4 gap-y-4'}>
         {sortBy(props.contacts, ['Role', 'Country', 'Name']).map(
             (contact: ContactNode, i: number) => (
                 <ContactCard key={i} contact={contact} />

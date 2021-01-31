@@ -85,6 +85,7 @@ export default function ScheduleDayRow(props: Props) {
     const tagsList: string[] = props.scheduleDay.Tags.map(
         (t: { Name: string }) => t.Name
     );
+
     return (
         <div
             className={
@@ -101,7 +102,7 @@ export default function ScheduleDayRow(props: Props) {
         >
             <div
                 className={
-                    'w-full h-12 text-md cursor-pointer text-gray-800 ' +
+                    'w-full h-12 text-base cursor-pointer text-gray-800 ' +
                     'flex flex-row items-center justify-center ' +
                     (props.scheduleDay.Label.includes('Worlds')
                         ? 'font-weight-700 '
@@ -109,7 +110,7 @@ export default function ScheduleDayRow(props: Props) {
                 }
                 onClick={() => setOpen(!open)}
             >
-                <div className='w-48 ml-4'>
+                <div className='w-40 ml-4 mr-2'>
                     {DAYS[date.getDay()]}, {dayString}
                 </div>
                 <div className={''}>{props.scheduleDay.Label}</div>
@@ -134,12 +135,30 @@ export default function ScheduleDayRow(props: Props) {
             </div>
             <div
                 className={
-                    'px-3 text-lg overflow-hidden origin-top ' +
-                    `${TRANSITION} ` +
-                    (open ? 'max-h-64 py-2 ' : 'max-h-0 py-0 ')
+                    `px-4 text-lg overflow-hidden origin-top ${TRANSITION} ` +
+                    'flex flex-col items-center justify-start gap-y-4 ' +
+                    (open ? 'max-h-72 my-4 ' : 'max-h-0 py-0 ')
                 }
             >
-                {JSON.stringify(props.scheduleDay)}
+                {props.scheduleDay.Events.map((e, i) => (
+                    <div
+                        key={i}
+                        className={
+                            'flex flex-row items-center w-full text-base text-gray-800 ' +
+                            (i % 2 == 0 ? 'opacity-80 ' : 'opacity-60 ')
+                        }
+                    >
+                        <div className='flex-shrink-0 w-40 mr-2 font-weight-700'>
+                            {e.Label}
+                        </div>
+                        <div
+                            className='self-stretch flex-grow font-weight-500 '
+                            dangerouslySetInnerHTML={{
+                                __html: e.Description.replace(/\n/g, '<br/>'),
+                            }}
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     );

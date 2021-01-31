@@ -39,7 +39,7 @@ export default function Layout({ location, children, pageContext }) {
         return children;
     }
 
-    const contentPadding = 'px-5vw xl:px-15vw 2xl:px-25vw';
+    const contentPadding = 'px-5vw xl:px-15vw 2xl:px-30vw';
 
     return (
         <div
