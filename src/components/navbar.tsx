@@ -64,14 +64,19 @@ const NavLink = (props: {
     label: string;
     to: string;
     transparent: boolean;
+    active: boolean;
 }) => (
     <Link
         to={props.to}
         className={
             'flex flex-row h-10 z-10 my-1 px-2 mx-2 group items-center justify-center' +
-            'transition-colors duration-200 cursor-pointer ' +
+            'transition-all duration-200 cursor-pointer ' +
             (props.transparent
-                ? 'text-white hover:text-gray-300 '
+                ? props.active
+                    ? 'text-white'
+                    : 'text-gray-300 hover:text-white '
+                : props.active
+                ? 'text-rose-500'
                 : 'text-gray-500 hover:text-rose-500 ')
         }
     >
@@ -80,7 +85,7 @@ const NavLink = (props: {
     </Link>
 );
 
-function Navbar(props: { isEventPage: boolean }) {
+function Navbar(props: { isEventPage: boolean; pathname: string }) {
     const [transparent, setTransparent] = useState(props.isEventPage);
     useEffect(() => {
         if (props.isEventPage) {
@@ -132,18 +137,21 @@ function Navbar(props: { isEventPage: boolean }) {
                 icon={TrophyIcon}
                 to='/event'
                 label='Event'
+                active={props.pathname.includes('event')}
             />
             <NavLink
                 transparent={transparent}
                 icon={ChecklistIcon}
                 to='/guide'
                 label='Sailors Guide'
+                active={props.pathname.includes('guide')}
             />
             <NavLink
                 transparent={transparent}
                 icon={ContactIcon}
                 to='/contact-us'
                 label='Contact Us'
+                active={props.pathname.includes('contact-us')}
             />
         </div>
     );

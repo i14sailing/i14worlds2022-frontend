@@ -49,7 +49,7 @@ export default function Layout({ location, children, pageContext }) {
             }
         >
             {helmetMeta}
-            <Navbar isEventPage={isEventPage} />
+            <Navbar isEventPage={isEventPage} pathname={location.pathname} />
             <main className={isEventPage ? '' : `mt-16 ${contentPadding}`}>
                 {children}
             </main>
