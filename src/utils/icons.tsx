@@ -7,6 +7,7 @@ const SVG = (props: { children: React.ReactNode }) => (
         height='24'
         viewBox='0 0 24 24'
         width='24'
+        className='w-full h-full'
     >
         {props.children}
     </svg>

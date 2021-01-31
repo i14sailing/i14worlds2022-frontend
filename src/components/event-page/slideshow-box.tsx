@@ -21,7 +21,7 @@ export default function SlideshowBox() {
                     }
                 >
                     <div className={'w-12 h-12 p-1 '}>{ICONS.slideshow}</div>
-                    <div className={'text-lg font-weight-500 '}>
+                    <div className={'text-lg font-weight-500'}>
                         Read the Invitation
                     </div>
                 </div>
