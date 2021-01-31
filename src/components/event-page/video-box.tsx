@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ICONS } from '../../utils/icons';
 
 export default function VideoBox() {
     const [videoMounted, setVideoMounted] = useState(false);
@@ -16,16 +17,7 @@ export default function VideoBox() {
         >
             {!videoMounted && (
                 <div className={'flex flex-col items-center justify-center'}>
-                    <div className={'w-12 h-12 p-1 '}>
-                        <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            height='24'
-                            viewBox='0 0 24 24'
-                            width='24'
-                        >
-                            <path d='M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.69L9.54 5.98C8.87 5.55 8 6.03 8 6.82z' />
-                        </svg>
-                    </div>
+                    <div className={'w-12 h-12 p-1 '}>{ICONS.play}</div>
                     <div className={'text-lg font-weight-500 '}>
                         Watch the Announcement
                     </div>
