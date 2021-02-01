@@ -7,7 +7,7 @@ export default function AddressBox() {
             className={
                 'relative rounded z-10 overflow-hidden ' +
                 'flex flex-col items-center justify-center ' +
-                'w-96 h-90 mb-4 p-4 text-gray-800 ' +
+                'w-96 h-90 p-4 text-gray-800 ' +
                 'text-lg font-weight-500 '
             }
         >
@@ -15,8 +15,15 @@ export default function AddressBox() {
             <div className=''>Quellental</div>
             <div className='mb-4'>24960 Glücksburg</div>
             <div className='flex flex-col items-start justify-start'>
-                <LinkButton to='/' label='Google Maps' className='mb-1' />
-                <LinkButton to='/' label='Apple Maps' />
+                <LinkButton
+                    to='https://goo.gl/maps/4bmYXeLZxqSmP3fy6'
+                    label='Google Maps'
+                    className='mb-1'
+                />
+                <LinkButton
+                    to='https://maps.apple.com/?address=Quellental,%2024960%20Gl%C3%BCcksburg,%20Deutschland&auid=1163186687818344146&ll=54.837134,9.524733&lsp=9902&q=Flensburger%20Segel-Club%20e.V.&_ext=ChkKBQgEEIEBCgQIBRADCgQIBhB0CgQIChAAEiYptzEsJodqS0AxMfEyjtEII0A5NQdSgq1rS0BBg6kxDM4QI0BQBA%3D%3D'
+                    label='Apple Maps'
+                />
             </div>
         </div>
     );

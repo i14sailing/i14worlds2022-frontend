@@ -33,7 +33,7 @@ export default function MapBox() {
             className={
                 'relative shadow rounded z-10 overflow-hidden ' +
                 'flex flex-col items-center justify-center ' +
-                'w-160 h-90 mb-4 ' +
+                'w-160 h-90 ' +
                 'bg-gray-900 text-gray-400 hover:text-white ' +
                 'transition-colors duration-100 cursor-pointer '
             }
