@@ -135,9 +135,9 @@ function Navbar(props: { isEventPage: boolean; pathname: string }) {
             <NavLink
                 transparent={transparent}
                 icon={TrophyIcon}
-                to='/event'
+                to='/'
                 label='Event'
-                active={props.pathname.includes('event')}
+                active={props.pathname.length < 2}
             />
             <NavLink
                 transparent={transparent}

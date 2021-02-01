@@ -25,19 +25,8 @@ export default function Layout({ location, children, pageContext }) {
         pageContext.layout === 'event'
     );
     useEffect(() => {
-        setIsEventPage(location.pathname.includes('event'));
+        setIsEventPage(location.pathname.length < 2);
     }, [location]);
-
-    if (pageContext.layout === 'landing') {
-        return (
-            <div className='fixed top-0 left-0 w-full h-full center-content'>
-                {helmetMeta}
-                <main>{children}</main>
-            </div>
-        );
-    } else if (pageContext.layout === 'presentation') {
-        return children;
-    }
 
     const contentPadding = 'px-5vw xl:px-15vw 2xl:px-30vw';
 
