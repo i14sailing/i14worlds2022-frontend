@@ -20,6 +20,7 @@ export default function MapBox() {
                 center: [9.525282, 54.836981], // starting position [lng, lat]
                 zoom: 4, // starting zoom
             });
+            map.addControl(new mapboxgl.FullscreenControl());
             new mapboxgl.Marker({ color: '#F43F5E' })
                 .setLngLat([9.525282, 54.836981])
                 .addTo(map);
@@ -32,7 +33,7 @@ export default function MapBox() {
             className={
                 'relative shadow rounded z-10 overflow-hidden ' +
                 'flex flex-col items-center justify-center ' +
-                'w-192 h-108 mb-4 ' +
+                'w-160 h-90 mb-4 ' +
                 'bg-gray-900 text-gray-400 hover:text-white ' +
                 'transition-colors duration-100 cursor-pointer '
             }
@@ -47,7 +48,7 @@ export default function MapBox() {
                 <div className={'flex flex-col items-center justify-center'}>
                     <div className={'w-12 h-12 p-1 '}>{ICONS.compass}</div>
                     <div className={'text-lg font-weight-500 mt-1 '}>
-                        View on a Map
+                        View Map
                     </div>
                 </div>
             )}

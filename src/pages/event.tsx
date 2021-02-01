@@ -6,6 +6,7 @@ import GrayLogo from 'static/images/EventLogo2022aCropped.svg';
 import Image1 from 'static/images/img-01-lg.jpg';
 import Image2 from 'static/images/img-02-lg.jpg';
 import MapBox from '../components/event-page/map-box';
+import AddressBox from 'src/components/event-page/address-box';
 
 // New last image? Maybe this one: https://www.facebook.com/Flensburger.Segel.Club/photos/p.2066988816653105/2066988816653105/?type=1&theater
 // Copyright Sven Jürgensen
@@ -38,7 +39,8 @@ export default function Index() {
             <div className='z-0 w-full mb-4'>
                 <img className='w-full h-full' src={Image2} />
             </div>
-            <div className='flex flex-row items-center justify-items-center gap-x-4'>
+            <div className='flex flex-row items-center mb-16 justify-items-center gap-x-4'>
+                <AddressBox />
                 <MapBox />
             </div>
         </div>
