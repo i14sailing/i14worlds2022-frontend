@@ -72,3 +72,4 @@ yarn-error.log
 
 tailwind.out.css
 !.env.example
+static/material-icons
