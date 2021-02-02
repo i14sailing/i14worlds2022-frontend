@@ -33,14 +33,14 @@ export default function MapBox(props: { className: string }) {
             <div
                 className={
                     'relative shadow rounded z-10 overflow-hidden ' +
-                    ` h-0 w-full pt-9/16 ` +
+                    ` h-0 w-full pt-100% sm:pt-9/16 ` +
                     'bg-gray-900 text-gray-400 hover:text-white ' +
                     'transition-colors duration-100 cursor-pointer '
                 }
                 onClick={() => setMapMounted(true)}
             >
                 <div className='absolute-full'>
-                    <div id='mapbox' ref={mapRef} className='absolute-full' />
+                    <div id='mapbox' ref={mapRef} className='w-full h-full' />
                 </div>
                 {!mapMounted && (
                     <div
