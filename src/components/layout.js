@@ -43,7 +43,7 @@ export default function Layout({ location, children, pageContext }) {
                 className={
                     isEventPage
                         ? ''
-                        : `md:mt-16 mb-16 md:mb-32 ${regularContent}`
+                        : `md:mt-16 mb-16 md:mb-20 lg:mb-24 xl:mb-28 ${regularContent}`
                 }
             >
                 {children}

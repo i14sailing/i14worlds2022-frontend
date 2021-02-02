@@ -148,7 +148,7 @@ export default function ScheduleDayRow(props: Props) {
             <div
                 className={
                     `px-4 text-lg overflow-hidden origin-top ${TRANSITION} ` +
-                    'flex flex-col items-center justify-start gap-y-4 ' +
+                    'flex flex-col items-center justify-start gap-y-4 space-y-4 ' +
                     (open ? 'max-h-108 sm:max-h-72 my-4 ' : 'max-h-0 py-0 ')
                 }
             >

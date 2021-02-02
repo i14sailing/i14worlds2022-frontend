@@ -16,7 +16,7 @@ export default function AddressBox(props: { className: string }) {
             <div className='mb-4'>24960 Glücksburg</div>
             <div className='flex flex-col items-start justify-start'>
                 <LinkButton
-                    to='https://goo.gl/maps/4bmYXeLZxqSmP3fy6'
+                    to='https:/www.google.com/maps/search/?api=1&query=Flensburger+Segel-Club'
                     label='Google Maps'
                     className='mb-1'
                 />
