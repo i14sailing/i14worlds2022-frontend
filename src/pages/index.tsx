@@ -31,15 +31,15 @@ export default function Index() {
                 <CountDownBox />
             </div>
             <div className='flex flex-row items-center justify-items-center gap-x-4'>
-                <VideoBox />
-                <SlideshowBox />
+                <VideoBox className='w-128' />
+                <SlideshowBox className='w-128' />
             </div>
             <div className='mb-4 overflow-hidden rounded shadow w-260'>
                 <img className='w-full h-full' src={Image2} />
             </div>
             <div className='flex flex-row items-center mb-4 justify-items-center gap-x-4'>
                 <AddressBox />
-                <MapBox />
+                <MapBox className='w-160' />
             </div>
             <div className='mb-16 overflow-hidden rounded shadow w-260'>
                 <img src={Image3} />

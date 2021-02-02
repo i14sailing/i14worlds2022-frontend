@@ -62,8 +62,8 @@
     @apply absolute;
     @apply top-0;
     @apply left-0;
-    @apply w-full;
-    @apply h-full;
+    @apply bottom-0;
+    @apply right-0;
 }
 
 svg {

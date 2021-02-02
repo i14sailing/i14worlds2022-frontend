@@ -6,7 +6,7 @@ import { ICONS } from '../../utils/icons';
 mapboxgl.accessToken =
     'pk.eyJ1IjoiZG9zdHVmZnRoYXRtYXR0ZXJzIiwiYSI6ImNra2xwZTExZTJqYWIyd3F0NHVnb2ZzN2wifQ.6piOma4PdLl6Njwj2sC7_w';
 
-export default function MapBox() {
+export default function MapBox(props: { className: string }) {
     const [mapMounted, setMapMounted] = useState(false);
 
     const mapRef = useRef(null);
@@ -29,29 +29,32 @@ export default function MapBox() {
     }, [mapMounted]);
 
     return (
-        <div
-            className={
-                'relative shadow rounded z-10 overflow-hidden ' +
-                'flex flex-col items-center justify-center ' +
-                'w-160 h-90 ' +
-                'bg-gray-900 text-gray-400 hover:text-white ' +
-                'transition-colors duration-100 cursor-pointer '
-            }
-            onClick={() => setMapMounted(true)}
-        >
+        <div className={props.className}>
             <div
-                id='mapbox'
-                ref={mapRef}
-                className='absolute top-0 bottom-0 left-0 right-0 w-full h-full'
-            />
-            {!mapMounted && (
-                <div className={'flex flex-col items-center justify-center'}>
-                    <div className={'w-12 h-12 p-1 '}>{ICONS.compass}</div>
-                    <div className={'text-lg font-weight-500 mt-1 '}>
-                        View Map
-                    </div>
+                className={
+                    'relative shadow rounded z-10 overflow-hidden ' +
+                    ` h-0 w-full pt-9/16 ` +
+                    'bg-gray-900 text-gray-400 hover:text-white ' +
+                    'transition-colors duration-100 cursor-pointer '
+                }
+                onClick={() => setMapMounted(true)}
+            >
+                <div className='absolute-full'>
+                    <div id='mapbox' ref={mapRef} className='absolute-full' />
                 </div>
-            )}
+                {!mapMounted && (
+                    <div
+                        className={
+                            'absolute-full flex flex-col items-center justify-center'
+                        }
+                    >
+                        <div className={'w-12 h-12 p-1 '}>{ICONS.compass}</div>
+                        <div className={'text-lg font-weight-500 mt-1 '}>
+                            View Map
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }
