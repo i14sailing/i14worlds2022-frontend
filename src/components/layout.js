@@ -39,7 +39,13 @@ export default function Layout({ location, children, pageContext }) {
         >
             {helmetMeta}
             <Navbar isEventPage={isEventPage} pathname={location.pathname} />
-            <main className={isEventPage ? '' : `mt-16 ${regularContent}`}>
+            <main
+                className={
+                    isEventPage
+                        ? ''
+                        : `md:mt-16 mb-16 md:mb-32 ${regularContent}`
+                }
+            >
                 {children}
             </main>
             <div className='self-stretch flex-grow' />

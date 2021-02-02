@@ -18,22 +18,26 @@ export default function Page() {
     const { nodes: countryHosts } = allStrapiCountryHost;
 
     return (
-        <div className='mb-32'>
-            <h2 className='mt-12 mb-8 text-gray-800'>Country Hosts</h2>
+        <>
+            <h2 className='mx-auto mb-6 text-gray-800 md:mb-8 w-60 md:w-auto'>
+                Country Hosts
+            </h2>
             {countryHosts.length > 0 && <ContactList contacts={countryHosts} />}
             {countryHosts.length === 0 && (
                 <div className='text-lg italic text-gray-800 font-weight-500'>
                     No country hosts yet
                 </div>
             )}
-            <h2 className='mt-12 mb-8 text-gray-800'>Contact Us</h2>
+            <h2 className='mx-auto mt-12 mb-6 text-gray-800 md:mb-8 w-60 md:w-auto'>
+                Contact Us
+            </h2>
             {contacts.length > 0 && <ContactList contacts={contacts} />}
             {contacts.length === 0 && (
                 <div className='text-lg italic text-gray-800 font-weight-500'>
                     No contacts yet
                 </div>
             )}
-        </div>
+        </>
     );
 }
 

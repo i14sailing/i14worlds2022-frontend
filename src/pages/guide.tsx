@@ -21,10 +21,12 @@ export default function Page() {
     const { nodes: days } = allStrapiScheduleDay;
 
     return (
-        <div className='mb-32'>
-            <h2 className='mt-12 mb-8 text-gray-800'>Preliminary Schedule</h2>
+        <>
+            <h2 className='mx-auto mb-6 text-gray-800 md:mb-8 w-60 md:w-auto'>
+                Preliminary Schedule
+            </h2>
             {<Schedule days={days} />}
-        </div>
+        </>
     );
 }
 
