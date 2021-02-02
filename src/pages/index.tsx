@@ -33,16 +33,16 @@ export default function Index() {
                 <CountDownBox />
             </div>
             <div className={wideContent}>
-                <div className='grid w-full grid-cols-2 mb-4 gap-x-4'>
+                <div className='grid w-full grid-cols-1 mb-4 md:grid-cols-2 gap-x-4 gap-y-4'>
                     <VideoBox className='w-full' />
                     <SlideshowBox className='w-full' />
                 </div>
                 <div className='w-full mb-4 overflow-hidden rounded shadow'>
                     <img className='w-full h-full' src={Image2} />
                 </div>
-                <div className='grid w-full grid-cols-3 mb-4 gap-x-4'>
-                    <AddressBox className='w-full h-full' />
-                    <MapBox className='w-full col-span-2' />
+                <div className='grid w-full grid-cols-3 mb-4 gap-x-4 gap-y-4 '>
+                    <AddressBox className='w-full h-full col-span-3 mb-12 md:col-span-1 md:mb-0' />
+                    <MapBox className='w-full col-span-3 md:col-span-2' />
                 </div>
                 <div className='w-full mb-16 overflow-hidden rounded shadow'>
                     <img src={Image3} />

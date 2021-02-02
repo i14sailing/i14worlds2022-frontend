@@ -102,27 +102,39 @@ export default function ScheduleDayRow(props: Props) {
         >
             <div
                 className={
-                    'w-full h-12 text-base cursor-pointer text-gray-800 ' +
-                    'flex flex-row items-center justify-center ' +
-                    (props.scheduleDay.Label.includes('Worlds')
-                        ? 'font-weight-700 '
-                        : 'font-weight-500 ')
+                    'w-full h-18 sm:h-12 text-base cursor-pointer text-gray-800 ' +
+                    'flex flex-row items-center justify-center font-weight-500 '
                 }
                 onClick={() => setOpen(!open)}
             >
-                <div className='w-40 ml-4 mr-2'>
-                    {DAYS[date.getDay()]}, {dayString}
-                </div>
-                <div className={''}>{props.scheduleDay.Label}</div>
-                {tagsList.map((t: string) => {
-                    const { icon, color } = getTagIcon(t);
-                    return (
-                        <div className={`w-5 h-5 ml-2 ${color}`} title={t}>
-                            {icon}
+                <div className='relative flex flex-col ml-4 sm:flex-row'>
+                    <div className='mb-1 mr-2 w-30 sm:mb-0'>
+                        {DAYS[date.getDay()]}, {dayString}
+                    </div>
+                    <div className='relative flex flex-row items-center'>
+                        <div
+                            className={
+                                props.scheduleDay.Label.includes('Worlds')
+                                    ? 'font-weight-700 '
+                                    : 'font-weight-500 '
+                            }
+                        >
+                            {props.scheduleDay.Label}
                         </div>
-                    );
-                })}
-                <div className='self-stretch flex-grow hidden lg:block' />
+                        {tagsList.map((t: string) => {
+                            const { icon, color } = getTagIcon(t);
+                            return (
+                                <div
+                                    className={`w-5 h-5 ml-2 ${color}`}
+                                    title={t}
+                                >
+                                    {icon}
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+                <div className='self-stretch flex-grow block' />
                 <div
                     className={
                         'w-12 h-12 p-3 text-gray-500 ' +
@@ -137,7 +149,7 @@ export default function ScheduleDayRow(props: Props) {
                 className={
                     `px-4 text-lg overflow-hidden origin-top ${TRANSITION} ` +
                     'flex flex-col items-center justify-start gap-y-4 ' +
-                    (open ? 'max-h-72 my-4 ' : 'max-h-0 py-0 ')
+                    (open ? 'max-h-108 sm:max-h-72 my-4 ' : 'max-h-0 py-0 ')
                 }
             >
                 {props.scheduleDay.Events.map((e, i) => (
@@ -148,7 +160,7 @@ export default function ScheduleDayRow(props: Props) {
                             (i % 2 == 0 ? 'opacity-80 ' : 'opacity-60 ')
                         }
                     >
-                        <div className='flex-shrink-0 w-40 mr-2 font-weight-700'>
+                        <div className='flex-shrink-0 mr-2 w-30 font-weight-700'>
                             {e.Label}
                         </div>
                         <div
