@@ -57,7 +57,9 @@ function Navbar(props: { isEventPage: boolean; pathname: string }) {
 
     return (
         <div
-            className={'fixed top-0 left-0 flex flex-row z-50 p-1 w-full h-14 '}
+            className={
+                'fixed hidden top-0 left-0 sm:flex flex-row z-50 p-1 w-full h-14 '
+            }
         >
             <div
                 className={
@@ -68,7 +70,7 @@ function Navbar(props: { isEventPage: boolean; pathname: string }) {
             />
             <div
                 className={
-                    'absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 ' +
+                    'absolute right-0 lg:right-1/2 top-1/2 transform lg:translate-x-1/2 -translate-y-1/2 ' +
                     'w-12 h-12 p-3 text-gray-500 transition-opacity duration-200 ' +
                     (transparent ? 'opacity-0 ' : 'opacity-75 ')
                 }
