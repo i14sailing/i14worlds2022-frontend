@@ -28,7 +28,7 @@ export default function Layout({ location, children, pageContext }) {
         setIsEventPage(location.pathname.length < 2);
     }, [location]);
 
-    const contentPadding = 'px-5vw xl:px-15vw 2xl:px-30vw';
+    const regularContent = 'px-4 lg:px-10vw xl:px-15vw 2xl:px-30vw';
 
     return (
         <div
@@ -39,11 +39,11 @@ export default function Layout({ location, children, pageContext }) {
         >
             {helmetMeta}
             <Navbar isEventPage={isEventPage} pathname={location.pathname} />
-            <main className={isEventPage ? '' : `mt-16 ${contentPadding}`}>
+            <main className={isEventPage ? '' : `mt-16 ${regularContent}`}>
                 {children}
             </main>
             <div className='self-stretch flex-grow' />
-            <div className={`w-full ${contentPadding}`}>
+            <div className={`w-full ${regularContent}`}>
                 <Footer />
             </div>
         </div>

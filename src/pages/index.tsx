@@ -10,6 +10,8 @@ import MapBox from '../components/event-page/map-box';
 import AddressBox from 'src/components/event-page/address-box';
 
 export default function Index() {
+    const wideContent = 'px-4 xl:px-15vw 2xl:px-20vw';
+
     return (
         <div className='flex flex-col items-center justify-center w-full '>
             <div
@@ -30,19 +32,21 @@ export default function Index() {
                 </div>
                 <CountDownBox />
             </div>
-            <div className='flex flex-row items-center justify-items-center gap-x-4'>
-                <VideoBox className='w-128' />
-                <SlideshowBox className='w-128' />
-            </div>
-            <div className='mb-4 overflow-hidden rounded shadow w-260'>
-                <img className='w-full h-full' src={Image2} />
-            </div>
-            <div className='flex flex-row items-center mb-4 justify-items-center gap-x-4'>
-                <AddressBox />
-                <MapBox className='w-160' />
-            </div>
-            <div className='mb-16 overflow-hidden rounded shadow w-260'>
-                <img src={Image3} />
+            <div className={wideContent}>
+                <div className='grid w-full grid-cols-2 mb-4 gap-x-4'>
+                    <VideoBox className='w-full' />
+                    <SlideshowBox className='w-full' />
+                </div>
+                <div className='w-full mb-4 overflow-hidden rounded shadow'>
+                    <img className='w-full h-full' src={Image2} />
+                </div>
+                <div className='grid w-full grid-cols-3 mb-4 gap-x-4'>
+                    <AddressBox className='w-full h-full' />
+                    <MapBox className='w-full col-span-2' />
+                </div>
+                <div className='w-full mb-16 overflow-hidden rounded shadow'>
+                    <img src={Image3} />
+                </div>
             </div>
         </div>
     );

@@ -1,13 +1,13 @@
 import React from 'react';
 import { ICONS } from '../../utils/icons';
 
-export default function AddressBox() {
+export default function AddressBox(props: { className: string }) {
     return (
         <div
             className={
                 'relative rounded z-10 overflow-hidden ' +
                 'flex flex-col items-center justify-center ' +
-                'w-96 h-90 p-4 text-gray-800 ' +
+                `${props.className} p-4 text-gray-800 ` +
                 'text-lg font-weight-500 '
             }
         >

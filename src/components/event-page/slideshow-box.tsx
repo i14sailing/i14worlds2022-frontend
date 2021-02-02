@@ -8,8 +8,8 @@ export default function SlideshowBox(props: { className: string }) {
         <div className={props.className}>
             <div
                 className={
-                    'shadow rounded z-10 ' +
-                    'relative w-full h-0 pt-9/16 mb-4 overflow-hidden '
+                    'shadow rounded z-10 overflow-hidden ' +
+                    'relative w-full h-0 pt-9/16 '
                 }
                 onClick={() => setMounted(true)}
             >

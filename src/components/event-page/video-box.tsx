@@ -8,10 +8,10 @@ export default function VideoBox(props: { className: string }) {
         <div className={props.className}>
             <div
                 className={
-                    'relative shadow rounded z-10 overflow-hidden bg-gray-900 ' +
+                    'relative shadow rounded z-10 overflow-hidden ' +
                     'flex flex-col items-center justify-center ' +
-                    'h-0 w-full pt-9/16 mb-4 ' +
-                    'text-gray-400 hover:text-white ' +
+                    'h-0 w-full pt-9/16 ' +
+                    'text-gray-400 hover:text-white bg-gray-900 ' +
                     'transition-colors duration-100 cursor-pointer '
                 }
                 onClick={() => setVideoMounted(true)}
