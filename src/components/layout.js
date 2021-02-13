@@ -18,6 +18,7 @@ export default function Layout({ location, children, pageContext }) {
                 content='International 14 World Championship 2022 - Flensburg, Germany'
             />
             <meta property='og:type' content='website' />
+            <meta property='og:image' content='/images/I14-icon-white-bg.png' />
         </Helmet>
     );
 
