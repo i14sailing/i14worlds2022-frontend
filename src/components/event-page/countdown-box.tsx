@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import GrayLogo from 'static/images/EventLogo2022aCropped.svg';
+import GrayLogo from 'static/images/EventLogo2022GrayCropped.svg';
 
 export default function CountDownBox() {
     // Set the date we're counting down to
