@@ -51,7 +51,12 @@ export default function CountDownBox() {
                     'font-weight-500 text-lg italic text-gray-800 '
                 }
             >
-                <img src={GrayLogo} />
+                <div
+                    className='relative w-full h-0'
+                    style={{ paddingTop: 'calc((368/823) * 100%)' }}
+                >
+                    <img className='absolute-full' src={GrayLogo} />
+                </div>
             </div>
             <div
                 className={
