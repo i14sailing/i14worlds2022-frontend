@@ -4,7 +4,7 @@ import GhostEmoji from '../../static/ghost-emoji.svg';
 
 export default function Home() {
     return (
-        <div className='flex flex-col items-center justify-center w-full mt-8 text-lg text-gray-800 font-weight-500'>
+        <div className='flex flex-col items-center justify-center w-full mt-32 text-lg text-gray-800 font-weight-500'>
             <div className='mb-2'>
                 Nothing here
                 <img

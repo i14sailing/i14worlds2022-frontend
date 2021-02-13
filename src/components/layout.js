@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from './footer';
+import Navbar from './navbar';
 import { Helmet } from 'react-helmet';
 
-export default function Layout({ children, pageContext }) {
+export default function Layout({ location, children, pageContext }) {
     const helmetMeta = (
         <Helmet>
             <meta charSet='utf-8' />
@@ -17,29 +18,41 @@ export default function Layout({ children, pageContext }) {
                 content='International 14 World Championship 2022 - Flensburg, Germany'
             />
             <meta property='og:type' content='website' />
+            <meta property='og:image' content='/images/I14-icon-white-bg.png' />
         </Helmet>
     );
 
-    if (pageContext.layout === 'landing') {
-        return (
-            <div className='fixed top-0 left-0 w-full h-full center-content'>
-                {helmetMeta}
-                <main>{children}</main>
-            </div>
-        );
-    }
+    const [isEventPage, setIsEventPage] = useState(
+        pageContext.layout === 'event'
+    );
+    useEffect(() => {
+        setIsEventPage(location.pathname.length < 2);
+    }, [location]);
+
+    const regularContent = 'px-4 lg:px-10vw xl:px-15vw 2xl:px-30vw';
 
     return (
         <div
             className={
-                'relative top-0 flex flex-col w-full min-h-screen bg-gray-100 ' +
-                'px-5vw xl:px-15vw 2xl:px-25vw '
+                'relative top-0 flex flex-col min-h-screen ' +
+                'bg-gray-100 w-full '
             }
         >
             {helmetMeta}
-            <main>{children}</main>
+            <Navbar isEventPage={isEventPage} pathname={location.pathname} />
+            <main
+                className={
+                    isEventPage
+                        ? ''
+                        : `md:mt-16 mb-16 md:mb-20 lg:mb-24 xl:mb-28 ${regularContent}`
+                }
+            >
+                {children}
+            </main>
             <div className='self-stretch flex-grow' />
-            <Footer />
+            <div className={`w-full ${regularContent}`}>
+                <Footer />
+            </div>
         </div>
     );
 }
