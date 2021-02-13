@@ -137,18 +137,3 @@ blurred-image {
     -webkit-filter: blur(4px); /* Safari 6.0 - 9.0 */
     filter: blur(4px);
 }
-
-.adjacent-shadow { 
-    position: relative;
-  }
-   
-.adjacent-shadow:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    @apply shadow;
-}

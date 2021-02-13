@@ -7,10 +7,15 @@ export default function ContactCard(props: { contact: ContactNode }) {
                 'bg-white rounded shadow flex flex-col overflow-hidden items-center justify-center'
             }
         >
-            <img
-                src={props.contact.Image.publicURL}
-                className='w-full bg-gray-300'
-            />
+            <div
+                className='relative w-full h-0 bg-gray-300'
+                style={{ paddingTop: '50%' }}
+            >
+                <img
+                    src={props.contact.Image.publicURL}
+                    className='absolute-full'
+                />
+            </div>
             <div
                 className={
                     'flex flex-col justify-center p-2 ' +
