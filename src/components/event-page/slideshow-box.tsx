@@ -27,9 +27,6 @@ export default function SlideshowBox(props: { className: string }) {
                         <div className={'text-lg font-weight-500'}>
                             Read the Invitation
                         </div>
-                        <div className={'text-sms font-weight-500'}>
-                            (Still uses the dates from 2021)
-                        </div>
                     </div>
                 )}
 

@@ -26,6 +26,9 @@ export default function VideoBox(props: { className: string }) {
                         <div className={'text-lg font-weight-500 '}>
                             Watch the Announcement
                         </div>
+                        <div className={'text-sm font-weight-500'}>
+                            (Still uses the 2021 dates)
+                        </div>
                     </div>
                 )}
                 {videoMounted && (
