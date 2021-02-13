@@ -71,10 +71,16 @@ export default function MobileNavbar(props: {
                 className={
                     'fixed top-0 left-0 z-30 w-18 h-18 p-4 m-0 ' +
                     ' pointer-events-auto rounded-br ' +
+                    'transition-colors duration-200 ' +
                     (props.transparent
                         ? 'text-white'
                         : 'bg-white text-gray-900 shadow ')
                 }
+                style={{
+                    filter: props.transparent
+                        ? 'drop-shadow(0 0 1.5px black)'
+                        : '',
+                }}
             >
                 {ICONS.menu}
             </div>
