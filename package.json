@@ -1,6 +1,6 @@
 {
-  "name": "tack-and-gybe-frontend",
-  "description": "Gatsby/TailwindCSS frontend for the I14 Tack and Gybe Challenge",
+  "name": "i14worlds2022-frontend",
+  "description": "Gatsby/TailwindCSS frontend for the I14 World Chapionship 2022",
   "scripts": {
     "build": "npm run build:tailwind && gatsby build",
     "build:tailwind": "tailwind build src/styles/tailwind.css -o src/styles/tailwind.out.css",
@@ -23,7 +23,11 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
-    "typeface-quicksand": "^1.1.13"
+    "typeface-quicksand": "^1.1.13",
+    "tailwindcss": "^2.0.2",
+    "typescript": "^4.1.3",
+    "autoprefixer": "^10.2.1",
+    "postcss": "^8.2.4"
   },
   "devDependencies": {
     "@types/mapbox-gl": "^2.0.4",
@@ -32,10 +36,6 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-helmet": "^6.1.0",
-    "autoprefixer": "^10.2.1",
-    "postcss": "^8.2.4",
-    "prettier": "2.2.1",
-    "tailwindcss": "^2.0.2",
-    "typescript": "^4.1.3"
+    "prettier": "2.2.1"
   }
 }
