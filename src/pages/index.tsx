@@ -7,6 +7,7 @@ import Image2 from 'static/images/img-02-lg.jpg';
 import Image3 from 'static/images/img-03-lg.jpg';
 import MapBox from '../components/event-page/map-box';
 import AddressBox from 'src/components/event-page/address-box';
+import { ICONS } from '../utils/icons';
 
 export default function Index() {
     const wideContent = 'px-4 xl:px-15vw 2xl:px-20vw';
@@ -29,6 +30,25 @@ export default function Index() {
                 <div className='grid w-full grid-cols-1 mb-4 md:grid-cols-2 gap-x-4 gap-y-4'>
                     <VideoBox className='w-full' />
                     <SlideshowBox className='w-full' />
+                </div>
+                <div className='w-full mb-4 bg-white rounded shadow font-weight-600 center-content'>
+                    <a
+                        href='https://storage.googleapis.com/i14worlds2022-presentations/I14worlds2022_invitation.pdf'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        className={
+                            'flex flex-col md:flex-row items-center justify-center ' +
+                            'w-full p-3 text-center cursor-pointer ' +
+                            'text-gray-700 hover:text-rose-600 '
+                        }
+                    >
+                        <div className='flex flex-row mb-2 space-x-2 opacity-50 md:mb-0 md:mr-2'>
+                            <div className='w-6 h-6'>{ICONS.slideshow}</div>
+                        </div>
+                        <div className='mb-1/2'>
+                            View invitation PDF in new tab (and download/print)
+                        </div>
+                    </a>
                 </div>
                 <div className='w-full mb-4 overflow-hidden rounded shadow'>
                     <div
