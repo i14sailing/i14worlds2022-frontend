@@ -39,7 +39,8 @@ export default function Index() {
                         className={
                             'flex flex-col md:flex-row items-center justify-center ' +
                             'w-full p-3 text-center cursor-pointer ' +
-                            'text-gray-700 hover:text-rose-600 '
+                            'text-gray-700 hover:text-rose-600 ' +
+                            'transition-colors duration-100 '
                         }
                     >
                         <div className='flex flex-row mb-2 space-x-2 opacity-50 md:mb-0 md:mr-2'>

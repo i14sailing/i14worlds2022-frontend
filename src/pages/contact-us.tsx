@@ -5,7 +5,7 @@ import ContactCard from '../components/contact-us-page/contact-card';
 
 const ContactList = (props: { contacts: ContactNode[] }) => (
     <div className={'grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-4'}>
-        {sortBy(props.contacts, ['Order', 'Role', 'Country', 'Name']).map(
+        {sortBy(props.contacts, ['Order', 'Role', 'Email']).map(
             (contact: ContactNode, i: number) => (
                 <ContactCard key={i} contact={contact} />
             )
